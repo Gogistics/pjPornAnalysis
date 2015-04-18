@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="author" content="Alan Tai">
+<meta name="company_name_english" content="Gogistics Ltd.">
+<meta name="company_name_mandarin" content="資雲科技有限公司">
+<meta name="keywords" content="porn,analysis">
+<meta name = "description" content= "porn,analysis">
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	
+<!-- speeds up cross domain loading using DNS prefetching -->
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//code.jquery.com">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+<!-- /dns prefetching -->
+
+<!-- icon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- favicon and touch icons for Apple devices (not done yet) -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="/apple-touch-icon-precomposed.png">
+<!-- /icon setting -->
+
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<!-- Bootstrap Core CSS -->
+<link type="text/css" rel="stylesheet" href="/css/plugin_bootstrap/bootstrap.min.css">
+
+<!-- leaflet -->
+<link type="text/css" rel="stylesheet" href="/leaflet/leaflet.css" />
+
+<!-- jquery ui -->
+<link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<!-- angularjs css -->
+<link type="text/css" rel="stylesheet" href="/css/plugin_ng/ng-animation.css">
+<link type="text/css" rel="stylesheet" href="/css/plugin_ng/animate.css">
+
+<!-- self-defined css -->
+<link type="text/css" rel="stylesheet" href="/css/base.css">
+<!--<![endif]-->
+
+{% block css_content %}{% endblock %}
+<title>{{ title|safe }}</title>
+</head>
+<body>
+	<!-- Processing Cover -->
+	<div id="processing_cover"
+		style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10000; text-align: center; color: #f00; background-color: #fff; opacity: 0.9; display: none;">
+		<p
+			style="position: relative; opacity: 1; color: #f00; width: 100%; height: 100%; margin: 20% auto;">需求處理中</p>
+	</div>
+
+	<!-- main content -->
+	{% block main_content %}
+	<p>No Templates Found</p>
+	{% endblock %}
+
+
+	<!-- IE alert -->
+	<!--[if lte IE 9]>
+	<script type="text/javascript">
+		alert("Do not support for IE version lower than or equal to IE 9");
+	</script>
+	<![endif]-->
+
+	<!--[if (gt IE 9)|!(IE)]><!--> 
+	<!-- js files are placed at the end of the document so the pages load faster -->
+	<!-- jquery ; there is jquery 1.11.0 in local folder for IE 7,8 -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	
+	<script type="text/javascript" src="/js/plugin_jq/jquery-cycle.js"></script>
+	<script type="text/javascript" src="/js/plugin_jq/jquery-maskedinput.js"></script>
+	
+	<!-- leaflet -->
+	<script type="text/javascript" src="/leaflet/leaflet.js"></script>
+	
+	<!-- angularjs -->
+	<script type="text/javascript" src="/js/plugin_ng/angular.min.js"></script>
+	<script type="text/javascript" src="/js/plugin_ng/angular-route.js"></script>
+	<script type="text/javascript" src="/js/plugin_ng/angular-ui-router.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+	
+	<!-- bootstrap -->
+	<script type="text/javascript" src="/js/plugin_bootstrap/bootstrap.min.js"></script>
+	
+	<!-- d3 -->
+	<script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="/js/plugin_d3/d3.js"></script>
+	<script type="text/javascript" src="/js/plugin_d3/d3_tips.js"></script>
+	<script type="text/javascript" src="/js/plugin_d3/box.js"></script>
+	
+	<!-- mis js -->
+	<script type="text/javascript" src="/js/plugin_mis/responsive-directive.js"></script>
+	<script type="text/javascript" src="/js/plugin_mis/moment_with_locales.js"></script>
+	
+	<!-- self-defined -->
+	<script type="text/javascript" src="/js/handler_openstreetmap.js"></script>
+	<!--<![endif]-->
+	
+	
+	<!-- sub-js -->
+	{% block js_content %}{% endblock %}
+</body>
+</html>

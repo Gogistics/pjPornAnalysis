@@ -1,0 +1,16 @@
+{% extends "/base.html"%}
+
+<!-- sub-css block -->
+{% block css_content %} {% endblock %}
+
+<!-- main content -->
+{% block main_content %}
+<div ng-app="indexPageApp" ng-controller="indexPageDispatchCtrl" ui-view></div>
+{% endblock %}
+
+<!-- sub-js block -->
+{% block js_content %}
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script type="text/javascript" src="/js/index_page_container.js"></script>
+<!--<![endif]-->
+{% endblock %}

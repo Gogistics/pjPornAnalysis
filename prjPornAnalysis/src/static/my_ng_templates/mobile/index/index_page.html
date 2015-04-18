@@ -1,0 +1,121 @@
+<style>
+@media all and (min-device-width: 768px) {
+	.list_icon:hover {
+		cursor: pointer;
+	}
+	
+	.list_block_show {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 10000;
+	}
+	
+	.list_display_none {
+		display: none;
+	}
+	
+	.list-group-item.active {
+		background-color: #333 !important;
+		border-color: #888 !important;
+	}
+	
+	.list_cover{
+		background-color: #555;
+		opacity: .7;
+		height: 100%;
+	}
+	.list_cover:hover{
+		cursor: pointer;
+	}
+	
+	.topic_selector:hover{
+		cursor: pointer;
+	}
+}
+
+@media all and (max-device-width: 767px) {
+	.list_icon_block{
+		margin: 0px auto;
+	}
+	.list_block_show {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 10000;
+	}
+	
+	.list_display_none {
+		display: none;
+	}
+	
+	.list-group-item.active {
+		background-color: #333 !important;
+		border-color: #888 !important;
+	}
+	
+	.list_cover{
+		background-color: #555;
+		opacity: .7;
+		height: 100%;
+	}
+	.list_cover:hover{
+		cursor: pointer;
+	}
+	
+	.topic_selector:hover{
+		cursor: pointer;
+	}
+}
+
+</style>
+
+<div ng-controller="indexPageCtrl as ctrl">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	
+		<div class="navbar-header">
+			<div class="pull-left list_icon_block" >
+				<a class="navbar-brand glyphicon glyphicon-list"
+					ng-click="ctrl.toggle_list()" style="font-size: 1.4em;"></a>
+			</div>
+				
+			<div class="pull-right">
+				<a href="/">
+				<img class="nav navbar-nav navbar-brand" alt="winever_logo"
+					src="/img/winever_txt.png" style="margin: 1px;">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- topics selector -->
+	<div id="list_block" class="container animated fadeOutLeft">
+		<div id="list_detail" class="row list_display_none"
+			style="height: 100%;">
+			
+			<!-- introduction and topic selector -->
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"
+				style="background-color: #eee; height: 100%;">
+				<img alt="winever_logo" src="/img/porn_logo.png"
+					style="max-height: 100px; margin: 20px auto;">
+				<div class="panel panel-default">
+					<div class="panel-heading">PORN ANALYTICS</div>
+					<div class="panel-body">
+						<p class="text-left">This web service porn behavior and tendency based on the major porn websites such as Pornhub.com, Xvideos.com, YouPorn.com, YouJizz.com, etc.</p>
+					</div>
+					<div class="list-group">
+						<a class="list-group-item topic_selector" ng-class = "ctrl.is_selected('index_wine_searcher') ? 'active' : '' " ng-click = "ctrl.select_topic('index_wine_searcher')">Search Wine</a>
+						<a class="list-group-item topic_selector" ng-class = "ctrl.is_selected('index_shipping_service') ? 'active' : '' " ng-click = "ctrl.select_topic('index_shipping_service')">Shipping Services</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- content view -->
+<div ui-view></div>

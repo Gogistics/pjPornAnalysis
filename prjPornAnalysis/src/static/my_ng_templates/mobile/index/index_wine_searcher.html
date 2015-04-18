@@ -1,0 +1,327 @@
+<!-- index page template -->
+<style>
+@media all and (min-device-width: 768px) {
+	.index_page_block {
+		height: 100%
+	}
+	.index_page_block.ng-enter{
+		-webkit-animation: fadeInUp 5s;
+	    -moz-animation: fadeInUp 5s;
+	    -ms-animation: fadeInUp 5s;
+	    animation: fadeInUp 5s;
+	}
+	
+	.vertical-center {
+		min-height: 100% !important;
+		min-height: 100vh !important;
+		display: flex !important;
+		display: -webkit-flex !important;
+		align-items: center !important;
+		-webkit-align-items: center !important;
+		justify-content: center;
+	}
+	.jumbotron {
+		margin-bottom: 0px !important;
+		background-color: transparent !important;
+	}
+	.flexcontainer {
+		height:200px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+	
+	::-webkit-input-placeholder {
+	   text-align: center;
+	}
+	
+	:-moz-placeholder { /* Firefox 18- */
+	   text-align: center;  
+	}
+	
+	::-moz-placeholder {  /* Firefox 19+ */
+	   text-align: center;  
+	}
+	
+	:-ms-input-placeholder {  
+	   text-align: center; 
+	}
+	
+	
+	/* vintage selector*/
+	.vintage_field{
+		width: 150px !important;
+		margin-right: 3px !important;
+		text-align: center !important;
+		border-top-left-radius: 3px !important;
+		border-bottom-left-radius: 3px !important;
+	}
+	
+	.wine_info_query_field{
+		text-align: center;
+	}
+	
+	
+	/* filter animation*/
+	.vintage_list{
+		max-height: 100px;
+		overflow: auto;
+	}
+	.animate-repeat {
+	  line-height:40px;
+	  list-style:none;
+	  box-sizing:border-box;
+	}
+	
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter,
+	.animate-repeat.ng-leave {
+	  -webkit-transition:all linear 0.5s;
+	  transition:all linear 0.5s;
+	}
+	
+	.animate-repeat.ng-leave.ng-leave-active,
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter {
+	  opacity:0;
+	  max-height:0;
+	}
+	
+	.animate-repeat.ng-leave,
+	.animate-repeat.ng-move.ng-move-active,
+	.animate-repeat.ng-enter.ng-enter-active {
+	  opacity:1;
+	  max-height:40px;
+	}
+	
+	
+	.search_block{
+		margin: 20px auto;
+	}
+	
+	.query_filter_filed{
+		text-align: center;
+	}
+	
+	.map_nearest_store{
+		width: 650px; height: 500px; border: 1px solid #eee; margin: 5px auto; border-radius: 3px;
+	}
+}
+
+@media all and (max-device-width: 767px) {
+	.index_page_block {
+		height: 100%
+	}
+	.index_page_block.ng-enter{
+		-webkit-animation: fadeInUp 5s;
+	    -moz-animation: fadeInUp 5s;
+	    -ms-animation: fadeInUp 5s;
+	    animation: fadeInUp 5s;
+	}
+	
+	.vertical-center {
+		min-height: 100% !important;
+		min-height: 100vh !important;
+		display: flex !important;
+		display: -webkit-flex !important;
+		align-items: center !important;
+		-webkit-align-items: center !important;
+		justify-content: center;
+		
+   		margin-top: 30px;
+	}
+	.jumbotron {
+		background-color: transparent !important;
+	}
+	.flexcontainer {
+		height:200px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+	
+	::-webkit-input-placeholder {
+	   text-align: center;
+	}
+	
+	:-moz-placeholder { /* Firefox 18- */
+	   text-align: center;  
+	}
+	
+	::-moz-placeholder {  /* Firefox 19+ */
+	   text-align: center;  
+	}
+	
+	:-ms-input-placeholder {  
+	   text-align: center; 
+	}
+	
+	
+	/* vintage selector*/
+	.vintage_field{
+		text-align: center !important;
+		border-radius: 4px !important;
+	}
+	
+	.wine_info_query_field{
+		text-align: center;
+	}
+	
+	/* filter animation*/
+	.vintage_list{
+		max-height: 100px;
+		overflow: auto;
+	}
+	.animate-repeat {
+	  line-height:40px;
+	  list-style:none;
+	  box-sizing:border-box;
+	}
+	
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter,
+	.animate-repeat.ng-leave {
+	  -webkit-transition:all linear 0.5s;
+	  transition:all linear 0.5s;
+	}
+	
+	.animate-repeat.ng-leave.ng-leave-active,
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter {
+	  opacity:0;
+	  max-height:0;
+	}
+	
+	.animate-repeat.ng-leave,
+	.animate-repeat.ng-move.ng-move-active,
+	.animate-repeat.ng-enter.ng-enter-active {
+	  opacity:1;
+	  max-height:40px;
+	}
+	
+	.search_input_group{
+		margin-top: 40%;
+		max-margin-top: 40px;
+	}
+	
+	.search_block{
+		margin: 20px auto;
+	}
+	
+	.query_filter_filed{
+		text-align: center;
+	}
+	
+	.map_nearest_store{
+		max-width: 260px; height: 630px; border: 1px solid #eee; margin: 5px auto; border-radius: 3px;
+	}
+	
+	/* popup size on map */
+	.popup_size{
+		width: 190px;
+	}
+}
+</style>
+
+<!-- content -->
+<div ng-controller="wineInfoQueryCtrl as ctrl" class="index_page_block">
+	<div class="vertical-center text-center">
+		<div class="container">
+			  <!-- wine search input group -->
+		      <div class="row search_input_group">
+		      		<div class="jumbotron">
+			      		<!--  -->
+			      		<div class="form-horizontal">
+						    <div class="form-group row">
+						        <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3 text-left">Wine:</label>
+						        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					          		 <input type="text" class="form-control" ng-model = "wine.info" placeholder="Query String">
+						        </div>
+						    </div>
+			      		
+			      			<div class="form-group">
+						        <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3 text-left">Vintage:</label>
+						        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					          		<input type="text" class="form-control" data-toggle="dropdown" placeholder="Vintage" ng-model= "wine.vintage">
+						        </div>
+						    </div>
+			      		</div>
+			      		
+			      		<!-- search button -->
+			            <input class="btn btn-default active col-xs-12 col-sm-12 col-md-12 col-lg-12" type="button" value="Search" ng-click = "ctrl.search_wine_info()">
+			      
+		      		</div>
+		      </div>
+		      
+		      <!-- query result -->
+		      <div ng-if="ctrl.has_result" class="animate-if">
+			      <!-- query result (text) -->
+			      <div class="row search_block">
+
+			      		<ul class="list-group">
+			      			<li class="list-group-item"><input class="form-control query_filter_filed" type="text" placeholder="Filter Query Information" ng-model="query_keyword"></li>
+			      			<li class="list-group-item animate-repeat" ng-repeat = "info in ctrl.info_list | filter:query_keyword">[[info]]</li>
+			      		</ul>
+
+			      </div>
+			      
+			      <!-- store info -->
+			      <div class="row search_block">
+						<!-- stores info block -->
+			      		<ul class="list-group">
+				      		<li class="row list-group-item">
+				      			<h5>Stores Information<br>(Selling Stores and Nearest Store)</h5>
+				      		</li>
+				      		
+				      		<li class="row">
+				      			<div id="map_nearest_store" ng-class="ctrl.is_map_shown() ? 'map_nearest_store' : '' "></div>
+				      		</li>
+				      		
+				      		<li class="row list-group-item text-center">
+					      			<ul class="list-group">
+					      				<li class="list-group-item"><input class="form-control query_filter_filed" type="text" placeholder="Filter Stores Information" ng-model="query_store_keyword"></li>
+					      				<li class="list-group-item text-left"  style="max-height: 400px; overflow: auto;">
+						      				<div class="animate-repeat" ng-repeat = "store in ctrl.selling_stores | filter:query_store_keyword">
+						      				[[store.merchant]]
+						      				<br>
+						      				[[store.merchant_description]]
+						      				<br>
+						      				<br>
+						      				[[store.address]]
+						      				<br>
+						      				[[store.state]]
+						      				<br>
+						      				[[store.country]]
+						      				<br>
+						      				Phone Number:<a href="tel:[[store.phone_number]]">&nbsp;[[store.phone_number]]</a>
+						      				<br>
+						      				<br>
+						      				[[store.wine]]
+						      				<br>
+						      				[[store.vintage]]
+						      				<br>
+						      				[[store.bottle_size]]
+						      				<hr>
+						      				</div>
+					      				</li>
+					      			</ul>
+				      			
+				      		</li>
+			      		</ul>
+			      		<!-- /stores info block -->
+			      </div>
+		      </div>
+		      <!-- /query result -->
+		</div>
+	</div>
+</div>

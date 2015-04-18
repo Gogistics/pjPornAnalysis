@@ -1,0 +1,243 @@
+<!-- index page template -->
+<style>
+@media all and (min-device-width: 768px) {
+	.index_page_block {
+		height: 100%
+	}
+	.index_page_block.ng-enter{
+		-webkit-animation: fadeInUp 5s;
+	    -moz-animation: fadeInUp 5s;
+	    -ms-animation: fadeInUp 5s;
+	    animation: fadeInUp 5s;
+	}
+	
+	.vertical-center {
+		min-height: 100% !important;
+		min-height: 100vh !important;
+		display: flex !important;
+		display: -webkit-flex !important;
+		align-items: center !important;
+		-webkit-align-items: center !important;
+		justify-content: center;
+		
+   		margin-top: 30px;
+	}
+	.jumbotron {
+		margin-bottom: 0px !important;
+		background-color: transparent !important;
+	}
+	.flexcontainer {
+		height:200px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+	
+	::-webkit-input-placeholder {
+	   text-align: center;
+	}
+	
+	:-moz-placeholder { /* Firefox 18- */
+	   text-align: center;  
+	}
+	
+	::-moz-placeholder {  /* Firefox 19+ */
+	   text-align: center;  
+	}
+	
+	:-ms-input-placeholder {  
+	   text-align: center; 
+	}
+	
+	
+	/* vintage selector*/
+	.vintage_field{
+		width: 150px !important;
+		margin-right: 3px !important;
+		text-align: center !important;
+	}
+	
+	.wine_info_query_field{
+		text-align: center;
+	}
+	
+	
+	/* filter animation*/
+	.vintage_list{
+		max-height: 100px;
+		overflow: auto;
+	}
+	.animate-repeat {
+	  line-height:40px;
+	  list-style:none;
+	  box-sizing:border-box;
+	}
+	
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter,
+	.animate-repeat.ng-leave {
+	  -webkit-transition:all linear 0.5s;
+	  transition:all linear 0.5s;
+	}
+	
+	.animate-repeat.ng-leave.ng-leave-active,
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter {
+	  opacity:0;
+	  max-height:0;
+	}
+	
+	.animate-repeat.ng-leave,
+	.animate-repeat.ng-move.ng-move-active,
+	.animate-repeat.ng-enter.ng-enter-active {
+	  opacity:1;
+	  max-height:40px;
+	}
+	
+	
+	.shipping_service_block{
+		margin: 20px auto;
+	}
+}
+
+@media all and (max-device-width: 767px) {
+
+	.index_page_block.ng-enter{
+		-webkit-animation: fadeInUp 5s;
+	    -moz-animation: fadeInUp 5s;
+	    -ms-animation: fadeInUp 5s;
+	    animation: fadeInUp 5s;
+	}
+	
+	.vertical-center {
+		min-height: 100% !important;
+		min-height: 100vh !important;
+		display: flex !important;
+		display: -webkit-flex !important;
+		align-items: center !important;
+		-webkit-align-items: center !important;
+		justify-content: center;
+		
+   		margin-top: 30px;
+	}
+	.jumbotron {
+		background-color: transparent !important;
+	}
+	.flexcontainer {
+		height:200px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+	
+	::-webkit-input-placeholder {
+	   text-align: center;
+	}
+	
+	:-moz-placeholder { /* Firefox 18- */
+	   text-align: center;  
+	}
+	
+	::-moz-placeholder {  /* Firefox 19+ */
+	   text-align: center;  
+	}
+	
+	:-ms-input-placeholder {  
+	   text-align: center; 
+	}
+	
+	/* filter animation*/
+	.vintage_list{
+		max-height: 100px;
+		overflow: auto;
+	}
+	.animate-repeat {
+	  line-height:40px;
+	  list-style:none;
+	  box-sizing:border-box;
+	}
+	
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter,
+	.animate-repeat.ng-leave {
+	  -webkit-transition:all linear 0.5s;
+	  transition:all linear 0.5s;
+	}
+	
+	.animate-repeat.ng-leave.ng-leave-active,
+	.animate-repeat.ng-move,
+	.animate-repeat.ng-enter {
+	  opacity:0;
+	  max-height:0;
+	}
+	
+	.animate-repeat.ng-leave,
+	.animate-repeat.ng-move.ng-move-active,
+	.animate-repeat.ng-enter.ng-enter-active {
+	  opacity:1;
+	  max-height:40px;
+	}
+	
+	
+	.shipping_service_block{
+		margin: 20px auto;
+	}
+	
+	.map_shipping_service_location{
+		width: 250px; height: 300px; border-radius: 3px; margin: 5px auto; border: 1px solid #eee;
+	}
+	
+	.popup_size{
+		width: 190px;
+	}
+}
+</style>
+
+<!-- content -->
+<div ng-controller="wineInfoQueryCtrl as ctrl">
+	<div class="vertical-center text-center">
+		
+			<div class="container">
+		      <div class="row shipping_service_block">
+		            <ul class="list-group">
+					   <li class="list-group-item">
+					      <h5 class="list-group-item-heading">
+					         Shipping Service
+					      </h5>
+					   </li>
+					   <li class="list-group-item text-center">
+					      <h4 class="list-group-item-heading">
+					         ExShipper
+					      </h4>
+					      <span class="list-group-item-text">
+					         Address: 56 S Spruce Ave., South San Francisco 94080
+					      </span>
+					      <br>
+					      <span class="list-group-item-text">
+					         Phone Number: <a href="tel:1-650-307-3834">1-650-307-3834</a>
+					      </span>
+					      <br>
+					      <div id="map_shipping_service_location" class="map_shipping_service_location"></div>
+					   </li>
+					   <li class="list-group-item">
+					      <h4 class="list-group-item-heading">Shipping Fee List</h4>
+					      <span class="list-group-item-text">Coming Soon</span>
+					   </li>
+					</ul>
+		      </div>
+			</div>
+	</div>
+</div>
+
+<!-- JS -->
+<script type="text/javascript" src="/js/index_shipping_service.js"></script>
