@@ -135,7 +135,7 @@ class TaskCrawlTempLinksDispatcher(BaseHandler):
     
 
 # categorize wine info
-class TaskCategorizeWineInfoDispatcher(BaseHandler):
+class TaskCategorizePornInfoDispatcher(BaseHandler):
     def get(self):
         """ cron task """
         self._categorize()
@@ -144,7 +144,7 @@ class TaskCategorizeWineInfoDispatcher(BaseHandler):
         """ categorize wine info """
         entities = WebLinkWineTemp.query().fetch(50) # to avoid running datastore free quota limit
         for entity in entities:
-            result = re.findall(r"BuyWine/Item/\d+|sku|skuIT-\d+|bwe\d+|wines/\d+|/wine/|Apply/Vintage/\d+", entity.link, re.I) # sku ; BuyWine/Item ; bwe
+            result = re.findall(r"video\d+|d+|videos\d+|watch\d+|viewkey=\d+", entity.link, re.I) # sku ; BuyWine/Item ; bwe
             query = WebLinkWine.query(WebLinkWine.link == entity.link)
             if result and query.count() == 0:
                 new_wine_info = WebLinkWine()
@@ -160,7 +160,7 @@ config = dict_general.config_setting
 app = webapp2.WSGIApplication([
     webapp2.Route(r'/cron_tasks/crawl_root_links', TaskCrawlRootLinksDispatcher, name = 'crawl_root_links'),
     webapp2.Route(r'/cron_tasks/crawl_temp_links', TaskCrawlTempLinksDispatcher, name = 'crawl_temp_links'),
-    webapp2.Route(r'/cron_tasks/categorize_wine_info', TaskCategorizeWineInfoDispatcher, name = "categorize_wine_info")
+    webapp2.Route(r'/cron_tasks/categorize_porn_info', TaskCategorizePornInfoDispatcher, name = "categorize_wine_info")
 ], debug=True, config=config)
 
 # log
