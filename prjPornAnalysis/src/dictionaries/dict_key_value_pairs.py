@@ -12,7 +12,7 @@ class KeyValuePairsGeneral():
         self.default_urls = [{u"title" : u"Pornhub",                        u"link" : u'http://www.pornhub.com'},
                              {u"title" : u"Xvideos",                        u"link" : 'http://www.xvideos.com'},
                              {u"title" : u"YouPorn",                        u"link" : u'http://www.youporn.com'},
-                             {u"title" : u"YouJizz",                    u"link" : 'http://www.youjizz.com'},
+                             {u"title" : u"xHamster",                    u"link" : 'http://www.xhamster.com'},
                              {u"title" : u"Redtube",                  u"link" : 'http://www.redtube.com'}]
         
         # query api

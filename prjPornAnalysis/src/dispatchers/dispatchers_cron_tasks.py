@@ -146,7 +146,7 @@ class TaskCategorizePornInfoDispatcher(BaseHandler):
         """ categorize wine info """
         entities = WebLinkPornTemp.query().fetch(50) # to avoid running datastore free quota limit
         for entity in entities:
-            result = re.findall(r"video\d+|d+|videos\d+|watch\d+|viewkey=\d+", entity.link, re.I) # sku ; BuyWine/Item ; bwe
+            result = re.findall(r"video\d+|redtube\.com\d+|videos\d+|watch\d+|viewkey=\d+", entity.link, re.I) # sku ; BuyWine/Item ; bwe
             query = WebLinkPorn.query(WebLinkPorn.link == entity.link)
             if result and query.count() == 0:
                 new_wine_info = WebLinkPorn()
@@ -171,7 +171,8 @@ class TaskCrawlTagInfo(BaseHandler):
                     if match_group:
                         tag_name = found_link.get('href')[found_link.get('href').rfind('/'):]
                         tag_number = str(found_link.previousSibling).strip()
-                        tag_info = Tag( name = tag_name,
+                        tag_info = Tag( site = 'Xvideo',
+                                        name = tag_name,
                                         number = tag_number,
                                         created_datetime = datetime.now())
                         
