@@ -5,10 +5,12 @@ Created on Dec 22, 2014
 @author: Alan Tai
 '''
 from handlers.handler_webapp2_extra_auth import BaseHandler
-from models.models_wine_info import WebLinkRoot, WebLinkWineTemp, WebLinkWine
+from models.models_porn_info import WebLinkRoot, WebLinkPornTemp, WebLinkPorn,\
+    Tag
 from dictionaries.dict_key_value_pairs import KeyValuePairsGeneral
 from bs4 import BeautifulSoup
 import webapp2, logging, re, urllib2, urlparse
+from datetime import datetime
 
 
 #
@@ -69,9 +71,9 @@ class TaskCrawlRootLinksDispatcher(BaseHandler):
         # store result into db
         while len(list_found_link) > 0:
             new_link = list_found_link.pop(0)
-            query = WebLinkWineTemp.query(WebLinkWineTemp.link == new_link['link'])
+            query = WebLinkPornTemp.query(WebLinkPornTemp.link == new_link['link'])
             if query.count() == 0:
-                new_info = WebLinkWineTemp()
+                new_info = WebLinkPornTemp()
                 new_info.link = new_link['link']
                 new_info.title = new_link['title']
                 new_info.put()
@@ -81,7 +83,7 @@ class TaskCrawlRootLinksDispatcher(BaseHandler):
 class TaskCrawlTempLinksDispatcher(BaseHandler):
     def get(self):
         # fetch entities from db
-        entities = WebLinkWineTemp.query().fetch(15)
+        entities = WebLinkPornTemp.query().fetch(15)
         search_list = []
         
         if entities:
@@ -125,9 +127,9 @@ class TaskCrawlTempLinksDispatcher(BaseHandler):
         # store result into db
         while len(list_found_link) > 0:
             new_link = list_found_link.pop(0)
-            query = WebLinkWineTemp.query(WebLinkWineTemp.link == new_link['link'])
+            query = WebLinkPornTemp.query(WebLinkPornTemp.link == new_link['link'])
             if query.count() == 0:
-                new_info = WebLinkWineTemp()
+                new_info = WebLinkPornTemp()
                 new_info.link = new_link['link']
                 new_info.title = new_link['title']
                 new_info.put()
@@ -142,16 +144,40 @@ class TaskCategorizePornInfoDispatcher(BaseHandler):
         
     def _categorize(self):
         """ categorize wine info """
-        entities = WebLinkWineTemp.query().fetch(50) # to avoid running datastore free quota limit
+        entities = WebLinkPornTemp.query().fetch(50) # to avoid running datastore free quota limit
         for entity in entities:
             result = re.findall(r"video\d+|d+|videos\d+|watch\d+|viewkey=\d+", entity.link, re.I) # sku ; BuyWine/Item ; bwe
-            query = WebLinkWine.query(WebLinkWine.link == entity.link)
+            query = WebLinkPorn.query(WebLinkPorn.link == entity.link)
             if result and query.count() == 0:
-                new_wine_info = WebLinkWine()
+                new_wine_info = WebLinkPorn()
                 new_wine_info.link = entity.link
                 new_wine_info.title = entity.title
                 new_wine_info.put()
 
+
+class TaskCrawlTagInfo(BaseHandler):
+    def get(self):
+        base_url = 'http://www.xvideo.com/tags/'
+        req = urllib2.Request(base_url)
+        response = urllib2.urlopen(req) # need to add new mechanism to prevent fetch javascript
+        searched_page = response.read()
+        soup = BeautifulSoup(searched_page)
+        
+        for found_link in soup.find_all('a'):
+            try:
+                if found_link.get('href'):
+                    match_group = re.match("/tags/.*", found_link.get('href'), re.I)
+                    
+                    if match_group:
+                        tag_name = found_link.get('href')[found_link.get('href').rfind('/'):]
+                        tag_number = str(found_link.previousSibling).strip()
+                        tag_info = Tag( name = tag_name,
+                                        number = tag_number,
+                                        created_datetime = datetime.now())
+                        
+                        tag_info.put()
+            except:
+                pass
 
 # configuration
 config = dict_general.config_setting
@@ -160,7 +186,8 @@ config = dict_general.config_setting
 app = webapp2.WSGIApplication([
     webapp2.Route(r'/cron_tasks/crawl_root_links', TaskCrawlRootLinksDispatcher, name = 'crawl_root_links'),
     webapp2.Route(r'/cron_tasks/crawl_temp_links', TaskCrawlTempLinksDispatcher, name = 'crawl_temp_links'),
-    webapp2.Route(r'/cron_tasks/categorize_porn_info', TaskCategorizePornInfoDispatcher, name = "categorize_wine_info")
+    webapp2.Route(r'/cron_tasks/categorize_porn_info', TaskCategorizePornInfoDispatcher, name = "categorize_wine_info"),
+    webapp2.Route(r'/cron_tasks/crawl_tag_info', TaskCrawlTagInfo, name = 'crawl_tag_info')
 ], debug=True, config=config)
 
 # log

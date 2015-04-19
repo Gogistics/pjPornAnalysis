@@ -9,7 +9,12 @@ cron:
   schedule: every 4 hours from 01:00 to 21:00
   timezone: Asia/Taipei
 
-- description: categorize wine info
+- description: categorize porn info
   url: /cron_tasks/categorize_porn_info
   schedule: every 4 hours from 02:00 to 22:00
+  timezone: Asia/Taipei
+
+- description: categorize porn info
+  url: /cron_tasks/crawl_tag_info
+  schedule: every 24 hours
   timezone: Asia/Taipei
