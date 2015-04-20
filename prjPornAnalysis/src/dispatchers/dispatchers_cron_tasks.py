@@ -157,7 +157,7 @@ class TaskCategorizePornInfoDispatcher(BaseHandler):
 
 class TaskCrawlTagInfo(BaseHandler):
     def get(self):
-        base_url = 'http://www.xvideo.com/tags/'
+        base_url = 'http://www.xvideos.com/tags/'
         req = urllib2.Request(base_url)
         response = urllib2.urlopen(req) # need to add new mechanism to prevent fetch javascript
         searched_page = response.read()
