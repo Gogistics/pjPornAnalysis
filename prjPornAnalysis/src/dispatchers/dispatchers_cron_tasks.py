@@ -169,9 +169,9 @@ class TaskCrawlTagInfo(BaseHandler):
                     match_group = re.match("/tags/.*", found_link.get('href'), re.I)
                     
                     if match_group:
-                        tag_name = found_link.get('href')[found_link.get('href').rfind('/'):]
-                        tag_number = str(found_link.previousSibling).strip()
-                        tag_info = Tag( site = 'Xvideo',
+                        tag_name = found_link.get('href')[found_link.get('href').rfind('/') + 1:]
+                        tag_number = str(found_link.nextSibling).strip()
+                        tag_info = Tag( site = 'Xvideos',
                                         name = tag_name,
                                         number = tag_number,
                                         created_datetime = datetime.now())
